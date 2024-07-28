@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.navbar0 {
+    height: 70px;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    box-sizing: border-box;
+}
+.nav-logo{
+    font-family: "poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin-left: 20px;
+}
+.nav-menuLinks{
+margin-left: 3vw;
+display: flex;
+align-items: center;
+justify-content: space-around;
+width: fit-content;
+height: fit-content;
+background-color: rgb(255, 255, 255);
+border: none;
+gap: 15px;
+font-size: 1.2rem;
+}
+.nav-menu1{
+    position: absolute;
+    left: 150px;
+    top: 0;
+    padding: 11px;
+}
+.nav-menu2{
+    position: absolute;
+    right: 40px;
+    top: 0;
+    padding: 8px;
+}
+.menu-links{
+font-size: 1.1em;
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 600;
+cursor: pointer;
+box-sizing: border-box;
+padding: 2px;
+}
+.links{
+border: 1.5px solid transparent;
+height: 100%;
+padding: 8px;
+border-radius: 4px;
+transition: 0.1s linear;
+display: flex;
+align-items: center;
+}
+
+.links:hover{
+    background-color: #535353;
+    color: white;
+}
