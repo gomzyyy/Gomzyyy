@@ -6,9 +6,10 @@ function App() {
 
   return (
     <>
+    <div className="lable"><pre>work    in    progress</pre> <span className="loader"></span>  </div>
       <Main1 />
     </>
   )
 }
 
-export default App
+export default App;

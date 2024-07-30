@@ -1,0 +1,71 @@
+.mini-profile {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.mini-profile-image {
+    height: 48px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0px 0px 18px 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+
+.mini-profile-data {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-profile-name,
+.mini-profile-title {
+    width: 100%;
+    height: 50%;
+}
+
+.mini-profile-name {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.mini-profile-name h4 {
+    margin: 9px 8px 8px 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.mini-profile-title div {
+    margin-left: 13px;
+    position: absolute;
+    bottom: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 350px;
+    display: inline-block;
+}
+.mini-profile-name h4:hover{
+  text-decoration: underline;
+}
+.mini-profile-name .mini-peofile-username{
+    color: rgba(0,0,0,0.6);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.mini-profile-name .mini-peofile-username:hover{
+    color: rgba(0,0,0,0.7);
+}

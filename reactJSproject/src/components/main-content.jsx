@@ -3,6 +3,7 @@ import "./styles/universal.css"
 import NavbarMain from "./navbar-main";
 import Posts from "./posts";
 import { useState } from "react";
+import Post from "./post";
 
 
 const MainContent = () => {
@@ -13,9 +14,12 @@ const MainContent = () => {
 
         <div className="main-content">
             <NavbarMain />
-          {posts ? <Posts/>: <span className="text-center fetching-noPost">No Posts Available</span> } 
+            <div className="posts-content">
+                <Post />
+            </div>
         </div>
 
     )
 }
 export default MainContent;
+     {/* {posts ? <Posts/>: <span className="text-center fetching-noPost">No Posts Available</span> }  */}

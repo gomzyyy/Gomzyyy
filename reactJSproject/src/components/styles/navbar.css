@@ -1,11 +1,14 @@
-.navbar0{
+.navbar0 {
     display: flex;
     justify-content: center;
     height: 70px;
     width: 100%;
+    position: absolute;
+    top: 0;
 }
 
-.latestContent, .trendingContent{
+.latestContent,
+.trendingContent {
     width: 50%;
     height: 100%;
     flex: 1;
@@ -17,7 +20,9 @@
     font-family: monospace;
     font-weight: 400;
 }
-.latestContent:hover, .trendingContent:hover{
-background-color: black;
-color: white;
+
+.latestContent:hover,
+.trendingContent:hover {
+    background-color: black;
+    color: white;
 }
