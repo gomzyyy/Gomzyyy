@@ -2,6 +2,7 @@
     "mediaPostData": [
         {
             "name": "Rohit Sharma",
+            "profileImage":"https://bsmedia.business-standard.com/_media/bs/img/article/2022-03/15/full/1647365891-7103.jpg",
             "userName": "rohitsharma39",
             "title": "We won the match",
             "description": "It was a fantastic match between Australia and us. Ofcource it felt very compititive but our teamwork bring us to this end point where we got the winning trophy. Congrats to my whole team for such a good performance and to give their best in this tourney.",
@@ -16,6 +17,7 @@
         },
         {
             "name": "Gomzy Dhingra",
+            "profileImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWG-YGnzktOQP7qKFlHDoW8VO5ctw3_-szw&s",
             "userName": "gomzyyy",
             "title": "bhagam bhag 2.O",
             "description": "End tak dekho bs🤣🤣",
