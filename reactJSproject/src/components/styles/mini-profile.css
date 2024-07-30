@@ -61,11 +61,11 @@
 .mini-profile-name h4:hover{
   text-decoration: underline;
 }
-.mini-profile-name .mini-peofile-username{
+.mini-profile-name .mini-profile-username{
     color: rgba(0,0,0,0.6);
     cursor: pointer;
     transition: 0.2s ease;
 }
-.mini-profile-name .mini-peofile-username:hover{
+.mini-profile-name .mini-profile-username:hover{
     color: rgba(0,0,0,0.7);
 }

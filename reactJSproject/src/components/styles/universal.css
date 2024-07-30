@@ -11,3 +11,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.flex-JusAliCenter{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}

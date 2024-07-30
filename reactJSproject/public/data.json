@@ -1,0 +1,32 @@
+{
+    "mediaPostData": [
+        {
+            "name": "Rohit Sharma",
+            "userName": "rohitsharma39",
+            "title": "We won the match",
+            "description": "It was a fantastic match between Australia and us. Ofcource it felt very compititive but our teamwork bring us to this end point where we got the winning trophy. Congrats to my whole team for such a good performance and to give their best in this tourney.",
+            "imageOk":true,
+            "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/media_bank/202308/rohit-sharma-071855-1x1.jpg?VersionId=raXx8EcB89UNSSeInVcKxSaKgHbk8cXQ",
+            "videoOk":false,
+            "video": "",
+            "likeCount": 99,
+            "commentCount": 56,
+            "comments": [],
+            "reach": 101
+        },
+        {
+            "name": "Gomzy Dhingra",
+            "userName": "gomzyyy",
+            "title": "bhagam bhag 2.O",
+            "description": "End tak dekho bs🤣🤣",
+            "imageOk":false,
+            "image": "",
+            "videoOk":true,
+            "video": "./video2.mp4",
+            "likeCount": 999,
+            "commentCount": 599,
+            "comments": [],
+            "reach": 10000
+        }
+    ]
+}
