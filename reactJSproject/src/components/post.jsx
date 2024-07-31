@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faComment, faChartSimple, faBookmark, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react";
 
+const Post = ({data}) => {
 
-const Post = ({ data }) => {
 
 const imageURL = data.image;
 const videoURL = data.video;
@@ -19,7 +19,7 @@ const videoURL = data.video;
 
     <div className="post-card">
       <div className="post-profile">
-        <MiniProfile data={data} />
+        <MiniProfile user={data} />
       </div>
       <div className={`post-description ${!visible && "txtOverflowManage"}`} >
         <span className="load-more" >{data.description}</span>

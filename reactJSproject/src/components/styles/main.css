@@ -17,16 +17,14 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 8vh;
+    top: 7vh;
 }
 /* sidebar */
 
 .sidebar,
 .content,
 .message-panel {
-    height: 91.8vh;
-    /* overflow-x: hidden;
-    overflow-y: scroll;   */
+    height: 92.8vh;
 }
 
 .sidebar {

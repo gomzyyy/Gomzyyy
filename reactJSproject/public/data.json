@@ -1,14 +1,58 @@
 {
-    "mediaPostData": [
+    "users": [
         {
             "name": "Rohit Sharma",
-            "profileImage":"https://bsmedia.business-standard.com/_media/bs/img/article/2022-03/15/full/1647365891-7103.jpg",
+            "profileImage": "https://bsmedia.business-standard.com/_media/bs/img/article/2022-03/15/full/1647365891-7103.jpg",
             "userName": "rohitsharma39",
+            "gender": "Male",
+            "age": 34,
+            "yob": 1990,
+            "intrest": [
+                "cricket",
+                "pubg",
+                "football",
+                "traveling"
+            ]
+        },
+        {
+            "name": "Gomzy Dhingra",
+            "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWG-YGnzktOQP7qKFlHDoW8VO5ctw3_-szw&s",
+            "userName": "gomzyyy",
+            "gender": "Male",
+            "age": 21,
+            "yob": 2003,
+            "intrest": [
+                "cricket",
+                "pubg",
+                "football",
+                "coding",
+                "traveling"
+            ]
+        },
+        {
+            "name": "Roman Reigns",
+            "profileImage": "https://cdn.britannica.com/05/241905-050-494EA022/WWE-wrestler-Roman-Reigns-at-Universal-Championship-Match-Texas-2023.jpg",
+            "userName": "roman69",
+            "gender": "Male",
+            "age": 44,
+            "yob": 1980,
+            "intrest": [
+                "cricket",
+                "pubg",
+                "football",
+                "coding",
+                "traveling"
+            ]
+        }
+    ],
+    "posts": [
+        {
+            "name": "Rohit Sharma",
+            "userName": "rohitsharma39",
+            "profileImage": "https://bsmedia.business-standard.com/_media/bs/img/article/2022-03/15/full/1647365891-7103.jpg",
             "title": "We won the match",
             "description": "It was a fantastic match between Australia and us. Ofcource it felt very compititive but our teamwork bring us to this end point where we got the winning trophy. Congrats to my whole team for such a good performance and to give their best in this tourney.",
-            "imageOk":true,
             "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/media_bank/202308/rohit-sharma-071855-1x1.jpg?VersionId=raXx8EcB89UNSSeInVcKxSaKgHbk8cXQ",
-            "videoOk":false,
             "video": "",
             "likeCount": 99,
             "commentCount": 56,
@@ -17,18 +61,29 @@
         },
         {
             "name": "Gomzy Dhingra",
-            "profileImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWG-YGnzktOQP7qKFlHDoW8VO5ctw3_-szw&s",
             "userName": "gomzyyy",
-            "title": "bhagam bhag 2.O",
-            "description": "End tak dekho bs🤣🤣",
-            "imageOk":false,
-            "image": "",
-            "videoOk":true,
-            "video": "./video2.mp4",
-            "likeCount": 999,
-            "commentCount": 599,
-            "comments": [],
-            "reach": 10000
+            "profileImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWG-YGnzktOQP7qKFlHDoW8VO5ctw3_-szw&s",
+           "title": "bhagam bhag 2.O",
+         "description": "End tak dekho bs🤣🤣",
+         "image": "",
+         "video": "./video2.mp4",
+         "likeCount": 999,
+         "commentCount": 599,
+         "comments": [],
+         "reach": 10000
+        }, 
+         {
+            "name": "Roman Reigns",
+            "profileImage": "https://cdn.britannica.com/05/241905-050-494EA022/WWE-wrestler-Roman-Reigns-at-Universal-Championship-Match-Texas-2023.jpg",
+            "userName": "roman69",
+          "title": "World champion💪",
+         "description": "It's about time that everyone simply acknowledged me!",
+         "image": "https://pbs.twimg.com/media/FxIviaSWwAAHJfY?format=jpg&name=large",
+         "video": "",
+         "likeCount": 999,
+         "commentCount": 599,
+         "comments": [],
+         "reach": 10000
         }
     ]
 }

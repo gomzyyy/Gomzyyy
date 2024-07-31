@@ -1,6 +1,6 @@
 import './App.css'
 import Main1 from './components/main1'
-import { PostDataProvider } from './components/post-contextAPI';
+import { PostDataProvider } from './components/contextAPI';
 
 
 function App() {

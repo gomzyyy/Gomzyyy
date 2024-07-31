@@ -1,15 +1,16 @@
 import "./styles/posts.css"
 import Post from "./post";
-import PostData from "./post-contextAPI";
+import Data from "./contextAPI";
 import { useContext } from "react";
 
 const Posts = () => {
 
-    const {data} = useContext(PostData)
+    const { posts, user } = useContext(Data);
+
 
     return (
         <div className="posts">
-         {data.map((data, i)=><Post key={i} data={data}/>)}
+            {posts.map((data, i) => <Post key={i} data={data} />)}
         </div>
     )
 }
