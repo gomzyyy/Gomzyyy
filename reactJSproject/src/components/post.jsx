@@ -7,9 +7,27 @@ import { useState } from "react";
 
 const Post = ({data}) => {
 
-
-const imageURL = data.image;
+  const imageURL = data.image;
 const videoURL = data.video;
+
+const getYouTubeEmbedUrl = (link) => {
+    const shortUrlPattern = /youtu\.be\/([a-zA-Z0-9_-]{11})/;
+    const longUrlPattern = /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+
+    let videoId = '';
+
+    if (shortUrlPattern.test(link)) {
+        videoId = link.match(shortUrlPattern)[1];
+    } else if (longUrlPattern.test(link)) {
+        videoId = link.match(longUrlPattern)[1];
+    }
+
+    if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}`;
+    } else {
+        return "";
+    }
+}
 
   const [visible, setVisible] = useState(false);
 
@@ -27,7 +45,7 @@ const videoURL = data.video;
       </div>
       {!imageURL && !videoURL && <div className="post-media flex-JusAliCenter"><span className="post-empty">No media available for this post.</span></div>}
       {imageURL && <div className="post-media"><img src={`${imageURL}`} /></div>}
-      {videoURL && <div className="post-media"><video src={`${videoURL}`} autoPlay controls muted loop></video></div>}
+      {videoURL && <div className="post-media"><iframe src={`${videoURL ? getYouTubeEmbedUrl(videoURL) : videoURL}`} allowFullScreen></iframe></div>}
 
       <div className="post-operations">
         <div className="post-reaction">

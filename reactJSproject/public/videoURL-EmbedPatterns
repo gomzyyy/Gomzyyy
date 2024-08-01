@@ -1,0 +1,30 @@
+
+
+// 1. YouTube
+// Embed URL: https://www.youtube.com/embed/{VIDEO_ID}
+// Example: https://www.youtube.com/embed/dQw4w9WgXcQ
+// Explanation: Replace {VIDEO_ID} with the actual video ID from the YouTube URL.
+
+
+// 2. Twitter
+// Embed URL: https://twitter.com/{USERNAME}/status/{TWEET_ID}
+// Example: https://twitter.com/twitter/status/1234567890123456789
+// Explanation: Replace {USERNAME} with the Twitter handle and {TWEET_ID} with the tweet's ID.
+
+
+// 3. Facebook
+// Embed URL: https://www.facebook.com/plugins/post.php?href={POST_URL}
+// Example: https://www.facebook.com/plugins/post.php?href=https://www.facebook.com/username/posts/1234567890123456
+// Explanation: Replace {POST_URL} with the full URL of the Facebook post.
+
+
+// 4. Instagram
+// Embed URL: https://www.instagram.com/p/{POST_ID}/embed
+// Example: https://www.instagram.com/p/Byx2Mw_B2Zj/embed
+// Explanation: Replace {POST_ID} with the Instagram post ID or shortcode.
+
+
+// 5. TikTok
+// Embed URL: https://www.tiktok.com/embed/v2/{VIDEO_ID}
+// Example: https://www.tiktok.com/embed/v2/1234567890123456789
+// Explanation: Replace {VIDEO_ID} with the TikTok video ID.

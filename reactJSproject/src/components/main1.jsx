@@ -9,10 +9,9 @@ const Main1 = () => {
   const [create, setCreate] = useState(false);
 
   const handleCreate = () => {
-    setCreate(!create);
-    console.log("clicked");
+   setCreate(!create)
   };
- 
+
 
   return (
     <>

@@ -1,37 +1,48 @@
-import { createContext, useEffect, useState, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
-const INITIAL_STATE={
-    posts:[],
-    error:null
+const INITIAL_STATE = {
+    posts: [],
+    users: [],
+    error: null
 };
 
-const postReducer = (state, action)=>{
+const postReducer = (state, action) => {
 
-    if(action.type === "CREATE_POST"){
+    if (action.type === "CREATE_VIDEO_POST") {
         return {
             ...state,
             posts: [...state.posts, action.payload],
             error: null
         }
-    }else if(action.type === "SET_POSTS"){
-        return{
-            ...state, posts:action.payload,
-            error:null
+    } else if (action.type === "CREATE_IMAGE_POST") {
+        return {
+            ...state,
+            posts: [...state.posts, action.payload],
+            error: null
+        }
+    }  else if (action.type === "SET_USERS") {
+        return {
+            ...state, users: action.payload,
+            error: null
+        }
+    }  else if (action.type === "SET_POSTS") {
+        return {
+            ...state, posts: action.payload,
+            error: null
         }
     }
-    
-    else{return state;}
+
+    else { return state; }
 }
 
 const Data = createContext({
-    user: [],
+    users: [],
     posts: [],
-    CreatePost:()=>{}
+    CreateVideoPost: () => { },
+    CreateImagePost: () => { }
 })
 
 export const PostDataProvider = ({ children }) => {
-
-    const [user, setUser] = useState([]);
 
     useEffect(() => {
         const postsFetching = async () => {
@@ -42,7 +53,7 @@ export const PostDataProvider = ({ children }) => {
                     console.log("Error occured while fetching data.");
                 }
                 const res = await fetching.json()
-                setUser(res.users);
+                dispatch({type:"SET_USERS", payload: res.users})
                 dispatch({ type: "SET_POSTS", payload: res.posts });
             } catch (e) {
                 console.error(e);
@@ -51,23 +62,35 @@ export const PostDataProvider = ({ children }) => {
         postsFetching();
     }, [])
 
-     const [state, dispatch] = useReducer(postReducer, INITIAL_STATE);
+    const [state, dispatch] = useReducer(postReducer, INITIAL_STATE);
 
-     const CreatePost = (signature, title, description, image, video) => {
-        console.log("called")
+    const createVideoPost = (name, userName, title, description, video) => {
         dispatch({
-            type:"CREATE_POST",
-            payload:{
-                signature,
+            type: "CREATE_VIDEO_POST",
+            payload: {
+                name,
+                userName,
                 title,
                 description,
-                image,
-                video
+                video,
+            }
+        })
+    };
+    const createImagePost = (name, userName, title, description, image) => {
+        console.log("called")
+        dispatch({
+            type: "CREATE_IMAGE_POST",
+            payload: {
+                name,
+                userName,
+                title,
+                description,
+                image
             }
         })
     }
     return (
-        <Data.Provider value={{ posts:state.posts, user, CreatePost }}>{children}</Data.Provider>
+        <Data.Provider value={{ posts: state.posts, users: state.users, createVideoPost, createImagePost }}>{children}</Data.Provider>
 
     )
 }
