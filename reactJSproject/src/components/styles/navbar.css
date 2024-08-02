@@ -1,28 +1,33 @@
 .navbar0 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     height: 70px;
     width: 100%;
     position: absolute;
     top: 0;
+    border-bottom: 0.5px solid grey;
+    background-color: grey;
 }
 
 .latestContent,
 .trendingContent {
-    width: 50%;
+    width: 49.9%;
     height: 100%;
-    flex: 1;
     font-size: 1.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.2s ease;
-    font-family: monospace;
-    font-weight: 400;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: whitesmoke;
+    background-color: #1F1F1F;
+    cursor: pointer;
 }
+
 
 .latestContent:hover,
 .trendingContent:hover {
-    background-color: black;
+    background-color: rgb(49, 49, 49);
     color: white;
 }

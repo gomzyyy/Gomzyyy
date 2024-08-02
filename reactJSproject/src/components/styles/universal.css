@@ -16,3 +16,9 @@
  align-items: center;
  justify-content: center;
 }
+.col-pink{
+    color: rgb(255, 71, 102);
+}
+.col-icon{
+    color: rgb(118, 118, 118);
+}

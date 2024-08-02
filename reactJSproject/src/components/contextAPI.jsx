@@ -3,66 +3,86 @@ import { createContext, useEffect, useReducer } from "react";
 const INITIAL_STATE = {
     posts: [],
     users: [],
+    comments: [],
     error: null
 };
 
 const postReducer = (state, action) => {
-
-    if (action.type === "CREATE_VIDEO_POST") {
-        return {
-            ...state,
-            posts: [...state.posts, action.payload],
-            error: null
-        }
-    } else if (action.type === "CREATE_IMAGE_POST") {
-        return {
-            ...state,
-            posts: [...state.posts, action.payload],
-            error: null
-        }
-    }  else if (action.type === "SET_USERS") {
-        return {
-            ...state, users: action.payload,
-            error: null
-        }
-    }  else if (action.type === "SET_POSTS") {
-        return {
-            ...state, posts: action.payload,
-            error: null
-        }
+    switch (action.type) {
+        case "CREATE_VIDEO_POST":
+        case "CREATE_IMAGE_POST":
+            return {
+                ...state,
+                posts: [...state.posts, action.payload],
+                error: null
+            };
+        case "CREATE_COMMENT":
+            return {
+                ...state,
+                comments: [...state.comments, action.payload],
+                error: null
+            };
+        case "SET_USERS":
+            return {
+                ...state,
+                users: action.payload,
+                error: null
+            };
+        case "SET_POSTS":
+            return {
+                ...state,
+                posts: action.payload,
+                error: null
+            };
+        case "SET_COMMENTS":
+            return {
+                ...state,
+                comments: Array.isArray(action.payload) ? action.payload : [],
+                error: null
+            };
+        default:
+            return state;
     }
-
-    else { return state; }
-}
+};
 
 const Data = createContext({
     users: [],
     posts: [],
-    CreateVideoPost: () => { },
-    CreateImagePost: () => { }
-})
+    comments: [],
+    createVideoPost: () => {},
+    createImagePost: () => {},
+    createComment: () => {}
+});
 
 export const PostDataProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(postReducer, INITIAL_STATE);
 
     useEffect(() => {
         const postsFetching = async () => {
-
             try {
                 const fetching = await fetch("./data.json");
                 if (!fetching.ok) {
-                    console.log("Error occured while fetching data.");
+                    console.log("Error occurred while fetching data.");
+                    return;
                 }
-                const res = await fetching.json()
-                dispatch({type:"SET_USERS", payload: res.users})
+                const res = await fetching.json();
+                dispatch({ type: "SET_USERS", payload: res.users });
                 dispatch({ type: "SET_POSTS", payload: res.posts });
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        postsFetching();
-    }, [])
 
-    const [state, dispatch] = useReducer(postReducer, INITIAL_STATE);
+                // Flatten all comments from posts into one array
+                const allComments = res.posts.reduce((acc, post) => {
+                    if (Array.isArray(post.comments)) {
+                        return [...acc, ...post.comments];
+                    }
+                    return acc;
+                }, []);
+                dispatch({ type: "SET_COMMENTS", payload: allComments });
+            } catch (e) {
+                console.error("Error during fetch:", e);
+            }
+        };
+        postsFetching();
+    }, []);
 
     const createVideoPost = (name, userName, title, description, video) => {
         dispatch({
@@ -74,10 +94,10 @@ export const PostDataProvider = ({ children }) => {
                 description,
                 video,
             }
-        })
+        });
     };
+
     const createImagePost = (name, userName, title, description, image) => {
-        console.log("called")
         dispatch({
             type: "CREATE_IMAGE_POST",
             payload: {
@@ -87,11 +107,28 @@ export const PostDataProvider = ({ children }) => {
                 description,
                 image
             }
-        })
-    }
-    return (
-        <Data.Provider value={{ posts: state.posts, users: state.users, createVideoPost, createImagePost }}>{children}</Data.Provider>
+        });
+    };
 
-    )
-}
+    const createComment = (comment) => {
+        dispatch({
+            type: "CREATE_COMMENT",
+            payload: comment // Directly pass the comment
+        });
+    };
+
+    return (
+        <Data.Provider value={{
+            posts: state.posts,
+            users: state.users,
+            comments: state.comments,
+            createVideoPost,
+            createImagePost,
+            createComment
+        }}>
+            {children}
+        </Data.Provider>
+    );
+};
+
 export default Data;
