@@ -19,7 +19,7 @@ const postReducer = (state, action) => {
         case "CREATE_COMMENT":
             return {
                 ...state,
-                comments: [...state.comments, action.payload],
+                comments: [action.payload , ...state.comments],
                 error: null
             };
         case "SET_USERS":
@@ -37,7 +37,7 @@ const postReducer = (state, action) => {
         case "SET_COMMENTS":
             return {
                 ...state,
-                comments: Array.isArray(action.payload) ? action.payload : [],
+                comments: [ action.payload , ...state.comments],
                 error: null
             };
         default:
@@ -68,15 +68,7 @@ export const PostDataProvider = ({ children }) => {
                 const res = await fetching.json();
                 dispatch({ type: "SET_USERS", payload: res.users });
                 dispatch({ type: "SET_POSTS", payload: res.posts });
-
-                // Flatten all comments from posts into one array
-                const allComments = res.posts.reduce((acc, post) => {
-                    if (Array.isArray(post.comments)) {
-                        return [...acc, ...post.comments];
-                    }
-                    return acc;
-                }, []);
-                dispatch({ type: "SET_COMMENTS", payload: allComments });
+                dispatch({ type: "SET_COMMENTS", payload: res.comments });
             } catch (e) {
                 console.error("Error during fetch:", e);
             }

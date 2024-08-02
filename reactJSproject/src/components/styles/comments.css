@@ -18,6 +18,7 @@
     background-color: rgb(44, 44, 44);
     padding: 8px;
     height: 42px;
+    min-height: 42px;
     width: 80%;
     min-width: 345px;
     display: flex;

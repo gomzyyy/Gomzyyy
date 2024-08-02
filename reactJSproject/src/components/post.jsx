@@ -9,14 +9,14 @@ import { useContext } from "react"
 import Data from "./contextAPI"
 
 const Post = ({ data }) => {
-
-  const comments = data.comments;
+  const { createComment, comments } = useContext(Data);
+  console.log(comments);
+  // const comments = data.comments;
   //contextAPI value
   const imageURL = data.image;
   const videoURL = data.video;
 
   const Likes = data.likeCount;
-  const Comments = data.comments.length;
 
   //Hooks
   const [visible, setVisible] = useState(false);
@@ -62,19 +62,23 @@ const Post = ({ data }) => {
     }
   };
 
-  const { createComment } = useContext(Data);
 
-  const commentEl = useRef("");
 
+
+
+  const CommentCount = data.comments.length;
+  const commentEl = useRef("no text:ERROR");
   const comment = commentEl.current.value;
-
   const CreateComment = () => {
-
+console.log(comment)
     if (comment === "") {
       return;
     }
     createComment(comment);
   };
+
+
+
 
   //render handling
   const handleLike = () => { setLike(!like); }
@@ -103,7 +107,7 @@ const Post = ({ data }) => {
               <span className="like-count">{countConvert(Likes, 10)}</span>
             </div>
             <div className="post-comment" onClick={handleComments}><FontAwesomeIcon icon={faComment} className="post-icon col-icon" />
-              <span className="comment-count">{countConvert(Comments, 10)}</span>
+              <span className="comment-count">{countConvert(CommentCount, 10)}</span>
             </div>
           </div>
           <div className="post-behaviour">
