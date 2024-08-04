@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Post } from "./postsModel.js";
 
 const userModel = mongoose.Schema({
 
@@ -17,12 +18,30 @@ const userModel = mongoose.Schema({
     },
     gender: {
         type: String,
-        enum:["male", "female"],
-        required:true
+        enum: ["male", "female"],
+        required: true
     },
-    profilePhoto:{
-        type:String,
-        default:""
-    }
-},{timestamps:true});
+    profilePhoto: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: ""
+    },
+    posts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post"
+        }
+    ],
+    followers:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }],
+    bookmarks:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Post"
+    }]
+}, { timestamps: true });
 export const User = mongoose.model("User", userModel);
