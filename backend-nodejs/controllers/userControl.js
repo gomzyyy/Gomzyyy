@@ -90,7 +90,7 @@ export const logout = async (req, res) => {
             if (!user) {
                 return res.status(404).json({ message: "user not found" })
             }
-            return res.cookie("token", "", { httpOnly: true, sameSite:"strict", expires: new Date(0) }).status(200).json(
+            return res.cookie("token", "", { httpOnly: true, sameSite: "strict", expires: new Date(0) }).status(200).json(
                 {
                     message: "loggout successful.",
                     success: true

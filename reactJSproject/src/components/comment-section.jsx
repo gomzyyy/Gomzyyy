@@ -1,11 +1,10 @@
 import "./styles/comments.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import "./styles/universal.css"
 import { useRef } from "react"
 import { useContext } from "react"
 import Data from "./contextAPI"
 
-const CommentSection = ({ data }) => {
+const CommentSection = ({ comments, newComment, handleCommentChange, data, commentWidth }) => {
 
     const { createComment } = useContext(Data);
 
@@ -21,16 +20,15 @@ const CommentSection = ({ data }) => {
         createComment(comment);
     };
     return (
-        <div className="comments-container">
-            <div className="create-comment"><input type="text" placeholder="Add comment." ref={commentEl} />
-                <FontAwesomeIcon icon={faArrowRight} className="icon-arrow-create" onClick={CreateComment} />
-            </div>
+        <div className={`comments-container ${commentWidth}`}>
             <ul className="comments">
-                {data.map((comment, i) => (
-                    <li className="comment" key={i}>
-                        <span className="user-name-comment">{data.userName}</span>
-                        {comment}
-                    </li>
+                {comments.map((comment, i) => (
+                    comment && (
+                        <li className="comment" key={i}>
+                            <span className="user-name-comment">{data.userName}</span>
+                            {comment}
+                        </li>
+                    )
                 ))}
             </ul>
         </div>

@@ -25,11 +25,6 @@ const CreatePost = ({ setCreate }) => {
     };
 
     const handleDiscardbtn = () => {
-        // titleEl.current.value = "";
-        // descriptionEl.current.value = "";
-        // signatureEl.current.value = "";
-        // if (mediaType === "image") { imageEl.current.value = ""; }
-        // if (mediaType === "video") { videoEl.current.value = ""; }
         setTimeout(() => setCreate(false), 100);
     };
 

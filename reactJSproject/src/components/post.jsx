@@ -2,22 +2,26 @@ import "./styles/posts.css";
 import "./styles/comments.css";
 import "./styles/universal.css";
 import MiniProfile from "./mini-profile";
+import CommentSection from "./comment-section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faComment, faChartSimple, faBookmark, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import Data from "./contextAPI";
 
 const Post = ({ data }) => {
   const { createComment, comments } = useContext(Data);
 
-  const imageURL = data.image;
-  const videoURL = data.video;
-  const Likes = data.likeCount;
+  let imageURL = data.image;
+  let videoURL = data.video;
 
   const [visible, setVisible] = useState(false);
   const [like, setLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+  const [commentCount, setCommentCount] = useState(0);
+  const [commentWidth, setCommentWidth] = useState("height0")
   const [commentSection, setCommentSection] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const [saved, setSaved] = useState(false);
 
   const getYouTubeEmbedUrl = (link) => {
     const shortUrlPattern = /youtu\.be\/([a-zA-Z0-9_-]{11})/;
@@ -50,18 +54,41 @@ const Post = ({ data }) => {
     setNewComment(e.target.value);
   };
 
+  const handleLike = () => {
+    if (!like) {
+      setLikeCount(a => a + 1)
+      setLike(true);
+    } else {
+      setLikeCount(a => a - 1)
+      setLike(false);
+    }
+  };
+  const handleVisible = () => setVisible(!visible);
+  const handleSaved = () => setSaved(!saved);
+
+  const handleComments = () => {
+    if (!commentSection) {
+      setCommentSection(true)
+      return setCommentWidth("height100");
+    } else {
+      setCommentSection(false)
+      return setTimeout(setCommentWidth("height0"), 200);
+    }
+  }
+
   const CreateComment = () => {
     if (newComment.trim() === "") return;
+    handleComments();
     createComment(newComment);
+    setCommentCount(c => c + 1)
     setNewComment("");
   };
 
-  const CommentCount = data.comments?.length || 0;
+  const toggleComments = () => {
 
-  const handleLike = () => setLike(!like);
-  const handleVisible = () => setVisible(!visible);
-  const handleComments = () => setCommentSection(!commentSection);
-  const handleCloseComments = () => setCommentSection(false);
+    setCommentSection(!commentSection)
+    handleComments();
+  };
 
   return (
     <>
@@ -88,47 +115,33 @@ const Post = ({ data }) => {
           <div className="post-reaction">
             <div className="post-like" onClick={handleLike}>
               <FontAwesomeIcon icon={faThumbsUp} className={`post-icon ${like ? "col-pink" : "col-icon"}`} />
-              <span className="like-count">{countConvert(Likes, 10)}</span>
+              <span className="like-count">{countConvert(likeCount, 10)}</span>
             </div>
-            <div className="post-comment" onClick={handleComments}>
+            <div className="post-comment" onClick={toggleComments}>
               <FontAwesomeIcon icon={faComment} className="post-icon col-icon" />
-              <span className="comment-count">{countConvert(CommentCount, 10)}</span>
+              <span className="comment-count">{countConvert(commentCount, 10)}</span>
             </div>
           </div>
           <div className="post-behaviour">
             <div className="post-reach">
               <FontAwesomeIcon icon={faChartSimple} className="post-icon col-icon" />
             </div>
-            <div className="post-save">
-              <FontAwesomeIcon icon={faBookmark} className="post-icon col-icon" />
+            <div className="post-save" onClick={handleSaved}>
+              <FontAwesomeIcon icon={faBookmark} className={`post-icon ${saved ? "col-white" : "col-icon"}`} />
             </div>
           </div>
         </div>
       </div>
+      <div className="create-comment">
+        <input
+          type="text"
+          placeholder="Add comment."
+          value={newComment}
+          onChange={handleCommentChange} />
+        <FontAwesomeIcon icon={faArrowRight} className="icon-arrow-create" onClick={CreateComment} />
+      </div>
 
-      {commentSection && (
-        <div className="comments-container">
-          <div className="create-comment">
-            <input
-              type="text"
-              placeholder="Add comment."
-              value={newComment}
-              onChange={handleCommentChange}
-            />
-            <FontAwesomeIcon icon={faArrowRight} className="icon-arrow-create" onClick={CreateComment} />
-          </div>
-          <ul className="comments">
-            {comments.map((comment, i) => (
-              comment && (
-                <li className="comment" key={i}>
-                  <span className="user-name-comment">{data.userName}</span>
-                  {comment}
-                </li>
-              )
-            ))}
-          </ul>
-        </div>
-      )}
+      <CommentSection comments={comments} handleCommentChange={handleCommentChange} data={data} commentWidth={commentWidth} />
     </>
   );
 };

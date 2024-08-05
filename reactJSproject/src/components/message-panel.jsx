@@ -1,10 +1,13 @@
 import "./styles/main.css"
 
+
 const MessagePanel = () =>{
 
     return(
         <>
-        <div className="message-panel"></div>
+        <div className="message-panel">
+      
+        </div>
         </>
     )
 }
